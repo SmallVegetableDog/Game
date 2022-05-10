@@ -41,10 +41,9 @@ import java.util.Objects;
  * 链接：https://leetcode.cn/problems/freedom-trail
  */
 public class Num514 {
-
     public static void main(String[] args) {
         Num514 num514 = new Num514();
-        System.out.println(num514.findRotateSteps("godding", "gd"));
+        System.out.println(num514.findRotateSteps("pqwcx","cpqwx"));
         //System.out.println(num514.findRotateSteps("god", "gd"));
     }
 
@@ -74,6 +73,7 @@ public class Num514 {
      * @param j    目标串的索引
      * @return
      */
+    //3+3+2+2+3
     private int dp(char[] ring, int i, char[] key, int j) {
         if (j == key.length) {
             return 0;
