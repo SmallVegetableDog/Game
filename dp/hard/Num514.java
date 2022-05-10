@@ -43,7 +43,7 @@ import java.util.Objects;
 public class Num514 {
     public static void main(String[] args) {
         Num514 num514 = new Num514();
-        System.out.println(num514.findRotateSteps("pqwcx","cpqwx"));
+        System.out.println(num514.findRotateSteps("pqwcx", "cpqwx"));
         //System.out.println(num514.findRotateSteps("god", "gd"));
     }
 
@@ -73,7 +73,6 @@ public class Num514 {
      * @param j    目标串的索引
      * @return
      */
-    //3+3+2+2+3
     private int dp(char[] ring, int i, char[] key, int j) {
         if (j == key.length) {
             return 0;
@@ -84,7 +83,7 @@ public class Num514 {
         List<Integer> indexs = chatToIndex.get(key[j]);
         int res = Integer.MAX_VALUE;
         for (int index : indexs) {
-            int juli = Math.min(Math.abs(i - index), Math.abs(i + ring.length - index));
+            int juli = Math.min(Math.abs(i - index), ring.length - Math.abs(i - index));
             res = Math.min(dp(ring, index, key, j + 1) + juli + 1, res);
         }
         memo[i][j] = res;
