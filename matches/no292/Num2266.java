@@ -2,6 +2,7 @@ package matches.no292;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Alice 在给 Bob 用手机打字。数字到字母的 对应 如下图所示。
@@ -48,41 +49,104 @@ import java.util.Map;
 public class Num2266 {
     public static void main(String[] args) {
         Num2266 num2266 = new Num2266();
-        System.out.println(num2266.countTexts("222222222222222222222222222222222222"));
+        System.out.println(num2266.countTextsBetter("444444444444444444444444444444448888888888888888999999999999333333333333333366666666666666662222222222222222666666666666666633333333333333338888888888888888222222222222222244444444444444448888888888888222222222222222288888888888889999999999999999333333333444444664"));
+
+       // System.out.println(num2266.countTexts("444444444444444444444444444444448888888888888888999999999999333333333333333366666666666666662222222222222222666666666666666633333333333333338888888888888888222222222222222244444444444444448888888888888222222222222222288888888888889999999999999999333333333444444664"));
     }
 
     public int countTexts(String pressedKeys) {
-        pressedKeys = pressedKeys + "e";
-        int pre = -1;
+        int len = pressedKeys.length();
         char[] chars = pressedKeys.toCharArray();
-        int count = 0;
-        long res = 1;
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(2, 6);
-        map.put(3, 6);
-        map.put(4, 6);
-        map.put(5, 6);
-        map.put(6, 6);
-        map.put(8, 6);
-        map.put(7, 7);
-        map.put(9, 7);
+        long[] dp = new long[len + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        int pre1 = chars[0] - '0';
+        int pre2 = -1;
+        int pre3 = -1;
 
-        for (int t = 0; t < chars.length; t++) {
-            int now = chars[t] -'0';
-            if (pre == -1 || now == pre) {
-                count++;
+
+        for (int i = 1; i < len; i++) {
+            int now = chars[i] - '0';
+            long res = 0;
+            if (now != pre1) {
+                res = dp[i];
             } else {
-                if (count <= 3 && count != 1) {
-                    res = res * 2 * (count - 1);
-                } else if (count > 3) {
-                    Integer base = map.get(pre);
-                    int i = count * 3 - base;
-                    res = res * i;
+                if (now == 7 || now == 9) {
+                    if (now == pre2 && now == pre3) {
+                        res = dp[i] + dp[i - 1] + dp[i - 2] + dp[i - 3];
+                    } else if (now == pre2) {
+                        res = dp[i] + dp[i - 1] + dp[i - 2];
+                    } else {
+                        res = dp[i] + dp[i - 1];
+                    }
+                } else {
+                    if (now == pre2) {
+                        res = dp[i] + dp[i - 1] + dp[i - 2];
+                    } else {
+                        //now单独作为一个字符加在dp[i]的字符后
+                        //now和pre1连起来作为一个字符加在dp[i-1]后
+                        res = dp[i] + dp[i - 1];
+                    }
                 }
-                count = 1;
             }
-            pre = now;
+            dp[i + 1] = res % 1000000007;
+            if (i == 1) {
+                pre2 = pre1;
+                pre1 = now;
+            } else {
+                pre3 = pre2;
+                pre2 = pre1;
+                pre1 = now;
+            }
         }
-        return (int) res % 1000000007;
+        return (int) dp[len] % 1000000007;
+    }
+
+    //优化成常数空间复杂度
+    public int countTextsBetter(String pressedKeys) {
+        int len = pressedKeys.length();
+        char[] chars = pressedKeys.toCharArray();
+        int pre1 = chars[0] - '0';
+        int pre2 = -1;
+        int pre3 = -1;
+
+        long dp0 = 1, dp1 = 1, dp2 = 0, dp3 = 0;
+
+        for (int i = 1; i < len; i++) {
+            int now = chars[i] - '0';
+            long res = 0;
+            if (now != pre1) {
+                res = dp0;
+            } else {
+                if (now == 7 || now == 9) {
+                    if (now == pre2 && now == pre3) {
+                        res = dp0 + dp1 + dp2 + dp3;
+                    } else if (now == pre2) {
+                        res = dp0 + dp1 + dp2;
+                    } else {
+                        res = dp0 + dp1;
+                    }
+                } else {
+                    if (now == pre2) {
+                        res = dp0 + dp1 + dp2;
+                    } else {
+                        res = dp0 + dp1;
+                    }
+                }
+            }
+            dp3 = dp2;
+            dp2 = dp1;
+            dp1 = dp0;
+            dp0 = res % 1000000007;
+            if (i == 1) {
+                pre2 = pre1;
+                pre1 = now;
+            } else {
+                pre3 = pre2;
+                pre2 = pre1;
+                pre1 = now;
+            }
+        }
+        return (int) dp0;
     }
 }
