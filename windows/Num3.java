@@ -39,6 +39,12 @@ public class Num3 {
         System.out.println(num3.lengthOfLongestSubstring("abcad"));
     }
 
+    //滑动窗口解法
+    private int lengthOfLongestSubstring(String s) {
+
+        return 0;
+    }
+
     //暴力思路
 //    public int lengthOfLongestSubstring(String s) {
 //        int length = s.length();
