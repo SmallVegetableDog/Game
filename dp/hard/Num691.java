@@ -38,7 +38,65 @@ package dp.hard;
  */
 public class Num691 {
 
-    public int minStickers(String[] stickers, String target) {
+    public static void main(String[] args) {
+        Num691 num691 = new Num691();
+        String[] strings = {"with", "example", "science"};
+        System.out.println(num691.minStickers(strings, "thehat"));
+    }
 
+    int[] memo;
+
+    public int minStickers(String[] stickers, String target) {
+        memo = new int[1 << target.length()];
+        return dp(stickers, target.toCharArray(), 0);
+    }
+
+    /**
+     * 设目标串target长度为n，建立一个长度为n的数组nums默认值为0，当第i位被stickers成功置换则把第i位置为1，所以当数组nums的值都填充为1时求得结果
+     * 数组nums的值就是状态，选择就是根据stickers进行遍历选取最小值
+     * 由于target长度为15以内，所以可以转化为一个long型的整数status来代替nums数组（status的状态数量为2的15次方-1），即base case为(1 << len) - 1 == status
+     * 但其实在力扣上使用int类型即可通过用例
+     *
+     * @param stickers
+     * @param target
+     * @param status
+     * @return
+     */
+    private int dp(String[] stickers, char[] target, int status) {
+        int len = target.length;
+        if ((1 << len) - 1 == status) {
+            return 0;
+        }
+        if (memo[status] != 0) {
+            return memo[status];
+        }
+        int res = 16;
+        for (String sticker : stickers) {
+            //将sticker的每个字符存入数组，数组下标为字符-‘a’。值为字符数量
+            int[] num = new int[26];
+            for (char s : sticker.toCharArray()) {
+                num[s - 'a']++;
+            }
+            int newStatus = status;
+            for (int i = 0; i < target.length; i++) {
+                char tar = target[i];
+                //newStatus的第i位没有被置为1
+                boolean bitStatus = ((1 << i) & newStatus) == 0;
+                //sticker字符串中含有tar字符 && newStatus的第i位没有被置为1
+                if (num[tar - 'a'] > 0 && bitStatus) {
+                    newStatus = newStatus | (1 << i);
+                    num[tar - 'a']--;
+                }
+            }
+            if (newStatus != status) {
+                //状态转换
+                int dp = dp(stickers, target, newStatus);
+                if (dp != -1) {
+                    res = Math.min(res, dp + 1);
+                }
+            }
+        }
+        memo[status] = res;
+        return res == 16 ? -1 : res;
     }
 }
