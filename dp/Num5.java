@@ -1,4 +1,4 @@
-package draft;
+package dp;
 
 /**
  * 5. 最长回文子串
@@ -35,6 +35,14 @@ public class Num5 {
         return s.substring(begin, end + 1);
     }
 
+    /**
+     * 去掉前后两个数后仍是一个回文串
+     *
+     * @param toCharArray
+     * @param i
+     * @param j
+     * @return
+     */
     private boolean dp(char[] toCharArray, int i, int j) {
         if (i >= j) {
             return true;
