@@ -36,13 +36,34 @@ public class Num3 {
     public static void main(String[] args) {
         Num3 num3 = new Num3();
 
-        System.out.println(num3.lengthOfLongestSubstring("abcad"));
+        System.out.println(num3.lengthOfLongestSubstring("abcabcbb"));
     }
 
     //滑动窗口解法
     private int lengthOfLongestSubstring(String s) {
-
-        return 0;
+        int len = s.length();
+        if (len <= 1) {
+            return len;
+        }
+        int i = 0, j = 1;
+        HashSet<Character> set = new HashSet<>();
+        set.add(s.charAt(i));
+        int count = 0;
+        while (j < len) {
+            char c = s.charAt(j);
+            if (set.contains(c)) {
+                while (s.charAt(i) != c) {
+                    set.remove(s.charAt(i));
+                    i++;
+                }
+                set.remove(s.charAt(i));
+                i++;
+            }
+            set.add(c);
+            count = Math.max(count, j - i+1);
+            j++;
+        }
+        return count;
     }
 
     //暴力思路
