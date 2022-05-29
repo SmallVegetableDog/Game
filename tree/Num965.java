@@ -36,6 +36,7 @@ public class Num965 {
         }
     }
 
+    //简单题，递归遍历即可
     public boolean isUnivalTree(TreeNode root) {
         if (root == null) {
             return true;
