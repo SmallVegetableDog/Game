@@ -59,6 +59,7 @@ public class Num174 {
         if (i > row || j > col) {
             return Integer.MAX_VALUE;
         }
+        //base case
         if (i == row && j == col) {
             if (dungeon[i][j] <= 0) {
                 memo[i][j] = -dungeon[i][j] + 1;
