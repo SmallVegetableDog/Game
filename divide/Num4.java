@@ -33,6 +33,13 @@ package divide;
  */
 public class Num4 {
 
+    /**
+     * todo
+     *
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int length1 = nums1.length, length2 = nums2.length;
         int totalLength = length1 + length2;

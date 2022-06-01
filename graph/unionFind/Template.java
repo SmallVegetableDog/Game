@@ -1,4 +1,4 @@
-package unionFind;
+package graph.unionFind;
 
 /**
  * 并查集算法模板

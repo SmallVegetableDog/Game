@@ -1,4 +1,4 @@
-package graph;
+package graph.二分图;
 
 import java.util.ArrayList;
 import java.util.List;
