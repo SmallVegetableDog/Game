@@ -45,7 +45,7 @@ public class Num785 {
     public boolean isBipartite(int[][] graph) {
         color = new Boolean[graph.length];
         ok = true;
-        //解决某些节点不存在边的情况
+        //解决某些节点不存在边的case
         //[[],[2,4,6],[1,4,8,9],[7,8],[1,2,8,9],[6,9],[1,5,7,8,9],[3,6,9],[2,3,4,6,9],[2,4,5,6,7,8]]
         for (int i = 0; i < graph.length; i++) {
             if (color[i] == null && graph[i].length > 0) {
