@@ -1,4 +1,4 @@
-package tree;
+package 树;
 
 /**
  * 965. 单值二叉树
