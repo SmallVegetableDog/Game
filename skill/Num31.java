@@ -1,4 +1,4 @@
-package 回溯;
+package skill;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -44,56 +44,36 @@ public class Num31 {
 
     public static void main(String[] args) {
         Num31 num31 = new Num31();
-        num31.nextPermutation(new int[]{1, 2, 3});
-        System.out.println();
+        num31.nextPermutation(new int[]{1, 3, 5, 4});
     }
 
-    boolean next;
 
-    boolean end;
-
-    Set<Integer> visit;
-
-    //暴力回溯会超时
     public void nextPermutation(int[] nums) {
-        visit = new LinkedHashSet<>(nums.length);
-        int[] backNums = nums.clone();
-        Arrays.sort(nums);
-        backTrack(nums, backNums);
-        Iterator<Integer> iterator = visit.iterator();
-        int i = 0;
-        while (iterator.hasNext()) {
-            nums[i] = iterator.next();
-        }
-    }
-
-    private void backTrack(int[] nums, int[] backNums) {
-        if (visit.size() == nums.length) {
-            if (next) {
-                end = true;
-                return;
-            }
-            next = true;
-            Iterator<Integer> iterator = visit.iterator();
-            int j = 0;
-            while (iterator.hasNext()) {
-                if (backNums[j++] != iterator.next()) {
-                    next = false;
-                }
-            }
+        int len = nums.length;
+        if (len < 2) {
             return;
         }
-        for (int i = 0; i < nums.length; i++) {
-            if (visit.contains(nums[i])) {
-                continue;
+        //i指针作为一个较小的数，j指针作为一个较大的数
+        //从后往前扫描可以保证较大数和较小数交换后形成的新排列和原排列的差距最小
+        //当满足i<j时，进行交换，并把i+1之后的数升序排列即为下一个排列
+        for (int i = len - 2; i >= 0; i--) {
+            for (int j = len - 1; j > i; j--) {
+                if (nums[j] > nums[i]) {
+                    swap(nums, i, j);
+                    Arrays.sort(nums, i + 1, len);
+                    return;
+                }
             }
-            visit.add(nums[i]);
-            backTrack(nums, backNums);
-            if (end) {
-                return;
-            }
-            visit.remove(nums[i]);
-
         }
+        //处理3，2，1这种已经是最大排列的case
+        for (int i = 0, j = len - 1; i < len / 2; i++, j--) {
+            swap(nums, i, j);
+        }
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[j];
+        nums[j] = nums[i];
+        nums[i] = temp;
     }
 }

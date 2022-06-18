@@ -29,6 +29,12 @@ public class Num42 {
 
     int sum = 0;
 
+    /**
+     * todo
+     *
+     * @param height
+     * @return
+     */
     public int trap(int[] height) {
         int l = 0, r = 0, len = height.length;
         if (len == 1) {
@@ -42,12 +48,8 @@ public class Num42 {
             while (r < len && height[r] < height[l]) {
                 r++;
             }
-            doTrap(height,l,r);
         }
-
+        return 0;
     }
 
-    private void doTrap(int[] height, int l, int r) {
-
-    }
 }
