@@ -1,6 +1,7 @@
-package draft;
+package skill;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,22 +37,22 @@ public class Num49 {
 
     public static void main(String[] args) {
         Num49 num49 = new Num49();
-        List<List<String>> lists = num49.groupAnagrams(new String[]{"cab", "tin", "pew", "duh", "may", "ill", "buy", "bar", "max", "doc"});
+        List<List<String>> lists = num49.groupAnagrams(new String[]{"eat", "tea", "tan", "ate", "nat", "bat"});
         System.out.println();
     }
 
-        public List<List<String>> groupAnagrams (String[]strs){
-            HashMap<Integer, List<String>> numToStrs = new HashMap<>();
+    //构造哈希表、排序使得key一致
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String, List<String>> numToStrs = new HashMap<>();
 
-            for (String str : strs) {
-                int num = 0;
-                for (char ch : str.toCharArray()) {
-                    num = num + (ch - 'a' + 1) + 3000;
-                }
-                List<String> strList = numToStrs.getOrDefault(num, new ArrayList<>());
-                strList.add(str);
-                numToStrs.put(num, strList);
-            }
-            return new ArrayList<>(numToStrs.values());
+        for (String str : strs) {
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String hash = new String(chars);
+            List<String> strList = numToStrs.getOrDefault(hash, new ArrayList<>());
+            strList.add(str);
+            numToStrs.put(hash, strList);
         }
+        return new ArrayList<>(numToStrs.values());
     }
+}
