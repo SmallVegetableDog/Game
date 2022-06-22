@@ -1,4 +1,4 @@
-package draft;
+package 双指针;
 
 /**
  * 75. 颜色分类
@@ -35,17 +35,26 @@ package draft;
 public class Num75 {
 
     public void sortColors(int[] nums) {
-        int i = 0, j = nums.length - 1;
-        while (i < j) {
-            while (i < j && nums[i] != 0) {
-                i++;
-            }
-            while (i < j && nums[j] != 2) {
-
+        int p0 = 0, p1 = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1) {
+                swap(nums, p1, i);
+                p1++;
+            } else if (nums[i] == 0) {
+                swap(nums, p0, i);
+                if (p1 > p0) {
+                    swap(nums, i, p1);
+                }
+                p0++;
+                p1++;
             }
         }
+    }
 
-
+    public void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
 

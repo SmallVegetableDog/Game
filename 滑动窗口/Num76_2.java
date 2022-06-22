@@ -1,4 +1,4 @@
-package draft;
+package 滑动窗口;
 
 import java.util.HashMap;
 
@@ -38,11 +38,11 @@ import java.util.HashMap;
  * <p>
  * 进阶：你能设计一个在 o(n) 时间内解决此问题的算法吗？
  */
-public class Num76 {
+public class Num76_2 {
 
     public static void main(String[] args) {
-        Num76 num76 = new Num76();
-        System.out.println(num76.minWindow("ADOBECODEBANC", "AABCA"));
+        Num76_2 Num76_2 = new Num76_2();
+        System.out.println(Num76_2.minWindow("ADOBECODEBANC", "AABCA"));
     }
 
     public String minWindow(String s, String t) {
