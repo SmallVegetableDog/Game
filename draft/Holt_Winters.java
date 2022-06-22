@@ -1,6 +1,5 @@
 package draft;
 
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,7 +145,6 @@ public class Holt_Winters {
         return pre_values;
     }
 
-    @Test
     public void test() {
         double[][] data1 = {{28000}};
         double[] dd1 = Holt_Winters.primary_index(0.4, data1);
