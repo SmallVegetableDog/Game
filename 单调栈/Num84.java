@@ -1,6 +1,5 @@
 package 单调栈;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 /**

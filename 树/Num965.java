@@ -17,25 +17,6 @@ package 树;
  */
 public class Num965 {
 
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     //简单题，递归遍历即可
     public boolean isUnivalTree(TreeNode root) {
         if (root == null) {
