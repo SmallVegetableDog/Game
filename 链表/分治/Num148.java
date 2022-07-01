@@ -1,4 +1,4 @@
-package draft;
+package 链表.分治;
 
 import 双指针.ListNode;
 
