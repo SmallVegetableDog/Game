@@ -1,4 +1,4 @@
-package draft;
+package skill;
 
 /**
  * 238. 除自身以外数组的乘积
@@ -40,9 +40,18 @@ public class Num238 {
             sum = sum * num;
         }
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0 &&count_0-1>0) {
-
+            if (count_0 > 1) {
+                nums[i] = 0;
+                continue;
+            }
+            if (nums[i] == 0) {
+                nums[i] = sum;
+            } else if (count_0 == 1) {
+                nums[i] = 0;
+            } else {
+                nums[i] = sum / nums[i];
             }
         }
+        return nums;
     }
 }
