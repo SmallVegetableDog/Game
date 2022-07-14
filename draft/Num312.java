@@ -1,6 +1,5 @@
 package draft;
 
-import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -41,37 +40,6 @@ public class Num312 {
     }
 
     public int maxCoins(int[] nums) {
-        int len = nums.length;
-        int[][] indexNums = new int[len][2];
-
-        for (int i = 0; i < len; i++) {
-            indexNums[i][0] = i;
-            indexNums[i][1] = nums[i];
-        }
-        Arrays.sort(indexNums, Comparator.comparingInt(o -> o[1]));
-        int sum = 0;
-        for (int i = 0; i < len; i++) {
-            int index = indexNums[i][0];
-            int num = nums[index];
-            int numL = 1;
-            int numR = 1;
-            int j = index - 1;
-            while (j >= 0 && nums[j] == -1) {
-                j--;
-            }
-            if (j >= 0) {
-                numL = nums[j];
-            }
-            j = index + 1;
-            while (j <= len - 1 && nums[j] == -1) {
-                j++;
-            }
-            if (j <= len - 1) {
-                numR = nums[j];
-            }
-            sum = sum + (num * numL * numR);
-            nums[index] = -1;
-        }
-        return sum;
+        return searchMaxCoins(nums, 0, nums.length - 1);
     }
 }
