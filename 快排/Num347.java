@@ -32,15 +32,15 @@ import java.util.PriorityQueue;
 public class Num347 {
 
     public int[] topKFrequent(int[] nums, int k) {
-        doFindKthLargest(nums,0, nums.length-1, k);
-        for(int)
+        doFindKthLargest(nums, 0, nums.length - 1, k);
+        return null;
     }
 
 
     private int doFindKthLargest(int[] nums, int i, int j, int k) {
         int position = quickSort(nums, i, j);
         swap(nums, i, position);
-        if (k == position+1) {
+        if (k == position + 1) {
             return nums[position];
         } else if (k > position) {
             return doFindKthLargest(nums, position + 1, j, k);

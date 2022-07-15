@@ -40,6 +40,6 @@ public class Num312 {
     }
 
     public int maxCoins(int[] nums) {
-        return searchMaxCoins(nums, 0, nums.length - 1);
+        return 0;
     }
 }
