@@ -1,4 +1,4 @@
-package 图论问题.unionFind;
+package 并查集unionFind;
 
 /**
  * 并查集算法模板

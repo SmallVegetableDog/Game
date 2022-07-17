@@ -1,4 +1,4 @@
-package 图论问题.unionFind;
+package 并查集unionFind;
 
 /**
  * 990. 等式方程的可满足性
