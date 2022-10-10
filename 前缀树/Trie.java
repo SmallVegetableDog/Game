@@ -1,9 +1,5 @@
 package 前缀树;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * 208. 实现 Trie (前缀树)

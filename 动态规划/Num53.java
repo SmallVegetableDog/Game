@@ -29,6 +29,7 @@ public class Num53 {
         int res = nums[0];
         int dp0 = 0;
 
+        //dp[n]以nums[n]结尾的最大和连续子数组
         for (int num : nums) {
             dp0 = Math.max(num, num + dp0);
             res = Math.max(dp0, res);

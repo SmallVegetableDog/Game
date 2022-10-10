@@ -33,6 +33,8 @@ public class Num10 {
 
     public static void main(String[] args) {
         Num10 num10 = new Num10();
+        System.out.println(num10.isMatch("ab", ".*"));
+
         System.out.println(num10.isMatch("aabcbcbcaccbcaabc", ".*a*aa*.*b*.c*.*a*"));
     }
 
@@ -72,7 +74,7 @@ public class Num10 {
         if (c == c2 || c2 == '.') {
             //aaa  a*   aaa b*aaa
             if (j < p.length() - 1 && p.charAt(j + 1) == '*') {
-                res = dp(s, i, p, j + 2) || dp(s, i + 1, p, j);
+                res = dp(s, i, p, j + 2) || dp(s, i + 1, p, j); //匹配0个 || 多个
             } else {
                 res = dp(s, i + 1, p, j + 1);
             }
