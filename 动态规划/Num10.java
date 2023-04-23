@@ -51,7 +51,7 @@ public class Num10 {
             return true;
         } else if (i == s.length()) { //s串匹配完，判断p串能否匹配空串（即p的形式类似于a*b*c*）
             int pl = p.length();
-            if ((pl - j) % 2 == 1) {
+            if ((pl - j) % 2 == 1) { //如果是单数 说明存在一个字符是不能够被*匹配为0个字符呃
                 return false;
             }
             while (j + 1 < pl) {
@@ -72,7 +72,7 @@ public class Num10 {
         char c = s.charAt(i), c2 = p.charAt(j);
         boolean res;
         if (c == c2 || c2 == '.') {
-            //aaa  a*   aaa b*aaa
+            //aaa a*aaa     aaa  a*
             if (j < p.length() - 1 && p.charAt(j + 1) == '*') {
                 res = dp(s, i, p, j + 2) || dp(s, i + 1, p, j); //匹配0个 || 多个
             } else {
