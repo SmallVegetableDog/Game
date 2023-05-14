@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76202cbe-21a1-4780-ba55-9bb194856eb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/skill/Num1010.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/二分搜索/Num875.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/动态规划/Num790.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/双指针/Num1679.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/哈希表/Num1657.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/滑动窗口/Num1456.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Draft.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/skill/Num287.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/回溯/Num51.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/树/Num199.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/树/Num230.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/动态规划/Num72.java" beforeDir="false" afterPath="$PROJECT_DIR$/动态规划/Num72.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,21 +41,15 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Num1657">
-    <configuration name="Num10" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="动态规划.Num10" />
+  <component name="RunManager" selected="Application.Num230">
+    <configuration name="Draft" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Draft" />
       <module name="Game" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="动态规划.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -72,10 +67,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Num230" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="树.Num230" />
+      <module name="Game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="树.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Num230" />
+        <item itemvalue="Application.Draft" />
         <item itemvalue="Application.Num1657" />
-        <item itemvalue="Application.Num10" />
       </list>
     </recent_temporary>
   </component>
