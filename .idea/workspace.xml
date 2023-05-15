@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76202cbe-21a1-4780-ba55-9bb194856eb8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Draft.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skill/Num287.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/回溯/Num51.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/树/Num199.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/树/Num230.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/滑动窗口/Num438.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/动态规划/Num72.java" beforeDir="false" afterPath="$PROJECT_DIR$/动态规划/Num72.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Draft.java" beforeDir="false" afterPath="$PROJECT_DIR$/Draft.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +42,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Num230">
+  <component name="RunManager" selected="Application.Draft">
     <configuration name="Draft" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Draft" />
       <module name="Game" />
@@ -82,8 +78,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Num230" />
         <item itemvalue="Application.Draft" />
+        <item itemvalue="Application.Num230" />
         <item itemvalue="Application.Num1657" />
       </list>
     </recent_temporary>
