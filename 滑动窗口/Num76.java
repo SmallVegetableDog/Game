@@ -1,6 +1,7 @@
 package 滑动窗口;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 76. 最小覆盖子串
@@ -46,51 +47,32 @@ public class Num76 {
     }
 
     public String minWindow(String s, String t) {
-        int begin = 0, end = 0;
-        int len = s.length();
-        int count = 0;
-        int res = Integer.MAX_VALUE;
-        String str = "";
-        HashMap<Character, Integer> charToCount = new HashMap<>();
-        for (char ch : t.toCharArray()) {
-            Integer num = charToCount.getOrDefault(ch, 0);
-            if (num == 0) {
-                count++;
-            }
-            charToCount.put(ch, num + 1);
+        Map<Character, Integer> targetMap = new HashMap<>();
+        for (char c : t.toCharArray()) {
+            targetMap.put(c, targetMap.getOrDefault(c, 0) + 1);
         }
-        while (end < len) {
-            char c = s.charAt(end);
-            if (charToCount.containsKey(c)) {
-                Integer num = charToCount.get(c);
-                num--;
-                if (num == 0) {
-                    count--;
-                }
-                charToCount.put(c, num);
+        String result = "";
+        int l = 0, r = 0, valid = 0;
+        char[] sourceArray = s.toCharArray();
+        Map<Character, Integer> windowMap = new HashMap<>();
+        while (r < s.length()) {
+            char c = sourceArray[r];
+            windowMap.put(c, windowMap.getOrDefault(c, 0) + 1);
+            if (windowMap.get(c).equals(targetMap.get(c))) {
+                valid++;
             }
-            end++;
-            if (count == 0) {
-                while (begin < end) {
-                    char ch = s.charAt(begin);
-                    if (charToCount.containsKey(ch)) {
-                        Integer num = charToCount.get(ch);
-                        num++;
-                        charToCount.put(ch, num);
-                        if (num == 1) {
-                            if (res > end - begin) {
-                                res = end - begin;
-                                str = s.substring(begin, end);
-                            }
-                            count++;
-                            begin++;
-                            break;
-                        }
-                    }
-                    begin++;
+            r++;
+            while (valid == targetMap.size()) {
+                if (result.length() == 0 || r - l < result.length()) {
+                    result = s.substring(l, r);
                 }
+                if (windowMap.get(sourceArray[l]).equals(targetMap.get(sourceArray[l]))) {
+                    valid--;
+                }
+                windowMap.put(sourceArray[l], windowMap.get(sourceArray[l]) - 1);
+                l++;
             }
         }
-        return str;
+        return result;
     }
 }
