@@ -1,3 +1,5 @@
+import 树.TreeNode;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,40 +9,36 @@ import java.util.Set;
 public class Draft {
 
     public static void main(String[] args) {
-        Draft draft = new Draft();
-        String result = draft.minWindow("ab", "b");
-        System.out.println(result);
+
     }
 
-    public String minWindow(String s, String t) {
-        Map<Character, Integer> targetMap = new HashMap<>();
-        for (char c : t.toCharArray()) {
-            targetMap.put(c, targetMap.getOrDefault(c, 0) + 1);
-        }
-        String result = "";
-        int l = 0, r = 0, valid = 0;
-        char[] sourceArray = s.toCharArray();
-        Map<Character, Integer> windowMap = new HashMap<>();
-        while (r < s.length()) {
-            char c = sourceArray[r];
-            windowMap.put(c, windowMap.getOrDefault(c, 0) + 1);
-            if (windowMap.get(c).equals(targetMap.get(c))) {
-                valid++;
-            }
-            r++;
-            while (valid == targetMap.size()) {
-                if (result.length() == 0 || r - l < result.length()) {
-                    result = s.substring(l, r);
-                }
-                if (windowMap.get(sourceArray[l]).equals(targetMap.get(sourceArray[l]))) {
-                    valid--;
-                }
-                windowMap.put(sourceArray[l], windowMap.get(sourceArray[l]) - 1);
-                l++;
-            }
-        }
-        return result;
+    int maxSum = Integer.MIN_VALUE;
+
+    public int maxPathSum(TreeNode root) {
+        traverse(root);
+        return maxSum;
     }
 
+    private int traverse(TreeNode root) {
+        if (root == null) {
+            return -10001;
+        }
+        int sum1 = traverse(root.left);
+        int sum2 = traverse(root.right);
+        int max = this.max(sum1, sum2, root.val, sum1 + root.val, sum2 + root.val, sum1 + sum2 + root.val);
+        maxSum = this.max(maxSum, max);
+        return this.max(sum1 + root.val, sum2 + root.val, root.val);
+    }
+
+    int max(int... num) {
+        if (num.length == 0) {
+            return 0;
+        }
+        int max = num[0];
+        for (int n : num) {
+            max = Math.max(n, max);
+        }
+        return max;
+    }
 
 }
