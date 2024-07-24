@@ -12,33 +12,25 @@ public class Draft {
 
     }
 
-    int maxSum = Integer.MIN_VALUE;
+    int preIdx = 0;
 
-    public int maxPathSum(TreeNode root) {
-        traverse(root);
-        return maxSum;
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return doBuildTree(preorder, inorder, 0, inorder.length - 1);
+
     }
 
-    private int traverse(TreeNode root) {
-        if (root == null) {
-            return -10001;
+    private TreeNode doBuildTree(int[] preorder, int[] inorder, int i, int j) {
+        if (i > j) {
+            return null;
         }
-        int sum1 = traverse(root.left);
-        int sum2 = traverse(root.right);
-        int max = this.max(sum1, sum2, root.val, sum1 + root.val, sum2 + root.val, sum1 + sum2 + root.val);
-        maxSum = this.max(maxSum, max);
-        return this.max(sum1 + root.val, sum2 + root.val, root.val);
-    }
+        int rootVal = preorder[preIdx++];
+        int k = i;
+        while (k <= j && rootVal != inorder[k++]) ;
 
-    int max(int... num) {
-        if (num.length == 0) {
-            return 0;
-        }
-        int max = num[0];
-        for (int n : num) {
-            max = Math.max(n, max);
-        }
-        return max;
+        TreeNode root = new TreeNode(rootVal);
+        root.left = doBuildTree(preorder, inorder, i, k - 1);
+        root.right = doBuildTree(preorder, inorder, k + 1, j);
+        return root;
     }
 
 }
